@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JsonValidationPoc.Model;
+using System;
+using System.IO;
+using System.Text.Json;
 
 namespace JsonValidationPoc
 {
@@ -10,6 +9,17 @@ namespace JsonValidationPoc
     {
         static void Main(string[] args)
         {
+
+            string jsonPath = "Json/car.json";
+
+            if (File.Exists(jsonPath))
+            {
+                Car car = JsonSerializer.Deserialize<Car>(jsonPath);
+                if (car != null)
+                {
+                    Console.WriteLine($"Car : Brand : {car.Brand} ; {car.Model} ; {car.EnginePower}");
+                }
+            }
         }
     }
 }
